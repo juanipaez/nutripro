@@ -1,28 +1,179 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #869fbe;
-    color: #333;
-    padding: 20px;
+    margin: 0;
+    padding: 0;
+    font-family: 'Figtree', sans-serif;
+    background-color: #4C5C68;
 }
 
-h1 {
-    color: #2c3e50;
+a {
+    color: #DCDCDD;
 }
 
-h2 {
-    color: #2c3e50;;
-    background-color: #f4f4f4;
+header {
+    margin: 10px;
+    position: relative;
+    text-align: center;
+    color: #DCDCDD;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 120px;
+}
+
+header a{
+    color: #DCDCDD;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+header a:hover {
+    color: #1985A1;
+}
+
+.header-search {
+    margin-left: auto;
+}
+
+header img {
+    position: absolute;
+    left: 50%;
+    top: 10px;
+    transform: translateX(-50%);
+}
+
+.header-links {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
 }
 
 nav {
-    background-color: #2c3e50;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+    background-color: #46494C;
     padding: 10px;
     margin-bottom: 20px;
+    font-weight: bold;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: #DCDCDD;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #1985A1;
+}
+
+.nav-links {
+    display: flex;
+    gap: 80px;
+    list-style: none;
+}
+
+#menu-toggle,
+.menu-icon {
+    display: none;
+}
+
+@media (max-width: 600px) {
+
+    .menu-icon {
+        display: block;
+        font-size: 30px;
+        color: #DCDCDD;
+        cursor: pointer;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #menu-toggle:checked ~ .nav-links {
+        display: flex;
+    }
+}
+
+.productos {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+    
+}
+
+.card {
+    
+    background-color: #C5C3C6;
+    width: 250px;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    
+    display: flex;
+    flex-direction: column;
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+}
+
+.card h2 {
+    color: #46494C;
+}
+
+.precio {
+    font-size: 20px;
+    font-weight: bold;
+    color: #1985A1;
+}
+
+.boton {
+    display: inline-block;
+    background-color: #1985A1;
+    color: #DCDCDD;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;   
+    margin-top: auto;
+}
+
+.boton:hover {
+    transform: translateY(-3px) scale(1.05);
+}
+
+.whatsapp {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;;
+}
+
+.whatsapp img {
+    transition: 0.3s;
+}
+
+.whatsapp img:hover {
+    transform: scale(1.15);
 }
 
 footer {
     text-align: center;
     margin-top: 20px;
     font-size: 0.9em;
-    color: #555;
+    color: #DCDCDD;
 }
