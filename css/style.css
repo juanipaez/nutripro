@@ -9,11 +9,16 @@ a {
     color: #DCDCDD;
 }
 
+h2 {
+    font-size: 24px;
+    color: #DCDCDD;
+}
+
 header {
     margin: 10px;
     position: relative;
+    /* background-color: #46494C; */
     text-align: center;
-    color: #DCDCDD;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -32,6 +37,7 @@ header a:hover {
 
 .header-search {
     margin-left: auto;
+    transform: translateX(20px);
 }
 
 header img {
@@ -46,6 +52,7 @@ header img {
     display: flex;
     justify-content: flex-end;
     gap: 20px;
+    transform: translateX(-20px);
 }
 
 nav {
@@ -84,7 +91,7 @@ nav a:hover {
     display: none;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 750px) {
 
     .menu-icon {
         display: block;
@@ -151,9 +158,46 @@ nav a:hover {
     font-weight: bold;
     transition: 0.3s;   
     margin-top: auto;
+    cursor: pointer;
 }
 
 .boton:hover {
+    transform: translateY(-3px) scale(1.05);
+}
+
+form {
+    margin-left: 150px;
+    color: #DCDCDD;
+    font-weight: bold;
+}
+
+input:not([type="submit"]) {
+    width: 244px;
+    height: 16px;
+    border: 0.8px;
+    padding: 12px;
+    border-radius: 3px;
+    font-size: 16px;
+}
+
+input[type="submit"] {
+    width: 268px;
+    border: 0.8px;
+    padding: 12px;
+    border-radius: 3px;
+    font-size: 16px;
+    
+    display: inline-block;
+    background-color: #1985A1;
+    color: #DCDCDD;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;   
+    margin-top: auto;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
     transform: translateY(-3px) scale(1.05);
 }
 
