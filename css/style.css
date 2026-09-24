@@ -1,7 +1,9 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Figtree', sans-serif;
+
+    font-family: 'Manrope', sans-serif;
+
     background-color: #4C5C68;
 }
 
@@ -25,10 +27,9 @@ header {
     min-height: 120px;
 }
 
-header a{
-    color: #DCDCDD;
+header a {
     text-decoration: none;
-    transition: 0.3s;
+    transition: 0.2s;
 }
 
 header a:hover {
@@ -45,6 +46,12 @@ header img {
     left: 50%;
     top: 10px;
     transform: translateX(-50%);
+    transition: 0.2s;
+}
+
+header img:hover {
+    transform: translateX(-50%) scale(1.05);
+    filter: drop-shadow(0 0 8px rgba(8, 37, 45, 0.5));
 }
 
 .header-links {
@@ -71,19 +78,21 @@ nav {
 }
 
 nav a {
-    color: #DCDCDD;
     text-decoration: none;
-    transition: 0.3s;
+    padding: 8px 14px;
+    border-radius: 15px;
+    transition: 0.2s;
 }
 
 nav a:hover {
     color: #1985A1;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.35);
+    background-color: #3A3D40;
 }
 
 .nav-links {
     display: flex;
     gap: 80px;
-    list-style: none;
 }
 
 #menu-toggle,
@@ -91,32 +100,12 @@ nav a:hover {
     display: none;
 }
 
-@media (max-width: 750px) {
-
-    .menu-icon {
-        display: block;
-        font-size: 30px;
-        color: #DCDCDD;
-        cursor: pointer;
-    }
-
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    #menu-toggle:checked ~ .nav-links {
-        display: flex;
-    }
-}
-
 .productos {
     display: flex;
     justify-content: center;
     gap: 30px;
     margin-top: 30px;
-    
+    flex-wrap: wrap;
 }
 
 .card {
@@ -124,9 +113,9 @@ nav a:hover {
     background-color: #C5C3C6;
     width: 250px;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 5px;
     text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.35);
     
     display: flex;
     flex-direction: column;
@@ -156,7 +145,7 @@ nav a:hover {
     border-radius: 5px;
     text-decoration: none;
     font-weight: bold;
-    transition: 0.3s;   
+    transition: 0.2s;   
     margin-top: auto;
     cursor: pointer;
 }
@@ -171,10 +160,17 @@ form {
     font-weight: bold;
 }
 
+form a {
+    transition: 0.2s;
+}
+
+form a:hover {
+    color: #1985A1;
+}
+
 input:not([type="submit"]) {
     width: 244px;
-    height: 16px;
-    border: 0.8px;
+    border: none;
     padding: 12px;
     border-radius: 3px;
     font-size: 16px;
@@ -182,18 +178,14 @@ input:not([type="submit"]) {
 
 input[type="submit"] {
     width: 268px;
-    border: 0.8px;
+    border: none;
     padding: 12px;
     border-radius: 3px;
     font-size: 16px;
-    
-    display: inline-block;
     background-color: #1985A1;
     color: #DCDCDD;
-    text-decoration: none;
     font-weight: bold;
-    transition: 0.3s;   
-    margin-top: auto;
+    transition: 0.2s;   
     cursor: pointer;
 }
 
@@ -204,11 +196,11 @@ input[type="submit"]:hover {
 .whatsapp {
     position: fixed;
     right: 20px;
-    bottom: 20px;;
+    bottom: 20px;
 }
 
 .whatsapp img {
-    transition: 0.3s;
+    transition: 0.2s;
 }
 
 .whatsapp img:hover {
@@ -220,4 +212,113 @@ footer {
     margin-top: 20px;
     font-size: 0.9em;
     color: #DCDCDD;
+}
+
+footer a {
+    transition: 0.2s;
+}
+
+footer a:hover {
+    color: #1985A1;
+}
+
+@media (max-width: 750px) {
+
+    header {
+        min-height: 180px;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    header img {
+        top: 10px;
+        width: 220px;
+    }
+
+    .header-search {
+        margin: 120px 0 0;
+        transform: none;
+    }
+
+    .header-links {
+        justify-content: center;
+        gap: 15px;
+        transform: none;
+    }
+
+    nav {
+        gap: 0;
+        padding: 8px;
+        justify-content: center;
+    }
+
+    .menu-icon {
+        display: block;
+        font-size: 30px;
+        color: #DCDCDD;
+        cursor: pointer;
+    }
+
+    .nav-links {
+        margin: 0;
+        padding: 0;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+    }
+
+    #menu-toggle:checked ~ .nav-links {
+        display: flex;
+    }
+
+    nav a {
+        padding: 8px 14px;
+        border-radius: 6px;
+    }
+
+    .productos {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        margin-top: 20px;
+    }
+
+    .card {
+        width: 280px;
+        box-sizing: border-box;
+    }
+
+    form {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    input:not([type="submit"]) {
+        width: 100%;
+        max-width: 268px;
+        box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+        width: 100%;
+        max-width: 268px;
+        box-sizing: border-box;
+    }
+
+    .whatsapp {
+        right: 15px;
+        bottom: 15px;
+    }
+
+    .whatsapp img {
+        width: 50px;
+        height: 50px;
+    }
+
+    footer {
+        margin-top: 30px;
+        padding: 0 15px;
+    }
 }
