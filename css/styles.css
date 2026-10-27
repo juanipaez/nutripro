@@ -19,7 +19,6 @@ h2 {
 header {
     margin: 10px;
     position: relative;
-    /* background-color: #46494C; */
     text-align: center;
     display: flex;
     justify-content: center;
@@ -222,42 +221,6 @@ footer a:hover {
     color: #1985A1;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* BOTÓN FLOTANTE DEL CARRITO */
 .carrito-flotante {
     position: fixed;
     right: 20px;
@@ -301,8 +264,6 @@ footer a:hover {
     font-weight: bold;
 }
 
-
-/* FONDO OSCURO */
 .carrito-fondo {
     position: fixed;
     inset: 0;
@@ -320,8 +281,6 @@ footer a:hover {
     visibility: visible;
 }
 
-
-/* PANEL LATERAL */
 .carrito-panel {
     position: fixed;
     top: 0;
@@ -348,8 +307,6 @@ footer a:hover {
     transform: translateX(0);
 }
 
-
-/* ENCABEZADO */
 .carrito-encabezado {
     display: flex;
     align-items: center;
@@ -382,8 +339,6 @@ footer a:hover {
     background-color: #dcdcdc;
 }
 
-
-/* LISTA DE PRODUCTOS */
 .carrito-productos {
     flex: 1;
     overflow-y: auto;
@@ -451,8 +406,6 @@ footer a:hover {
     font-size: 12px;
 }
 
-
-/* PIE DEL CARRITO */
 .carrito-pie {
     padding: 20px;
     border-top: 1px solid #e5e5e5;
@@ -492,8 +445,6 @@ footer a:hover {
     cursor: not-allowed;
 }
 
-
-/* CARRITO VACÍO */
 .carrito-vacio {
     padding: 30px 10px;
     color: #777777;
@@ -501,7 +452,6 @@ footer a:hover {
 }
 
 
-/* ADAPTACIÓN A CELULARES */
 @media (max-width: 480px) {
     .carrito-panel {
         width: 100%;
@@ -603,7 +553,6 @@ footer a:hover {
         box-sizing: border-box;
     }
 
-    /* WhatsApp */
     .whatsapp {
         right: 15px;
         bottom: 15px;
@@ -614,7 +563,6 @@ footer a:hover {
         height: 50px;
     }
 
-    /* Botón flotante del carrito */
     .carrito-flotante {
         right: 15px;
         bottom: 80px;
@@ -622,12 +570,10 @@ footer a:hover {
         height: 55px;
     }
 
-    /* Fondo oscuro detrás del carrito */
     .carrito-fondo {
         inset: 0;
     }
 
-    /* Panel del carrito */
     .carrito-panel {
         width: 100%;
         max-width: 100%;

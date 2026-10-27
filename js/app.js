@@ -1,67 +1,5 @@
-
-// const CLAVE_CARRITO = "carrito";
-
-// function obtenerCarrito() {
-//     return JSON.parse(localStorage.getItem(CLAVE_CARRITO)) || [];
-// }
-
-// function guardarCarrito(carrito) {
-//     localStorage.setItem(CLAVE_CARRITO, JSON.stringify(carrito));
-// }
-
-// function agregarAlCarrito(producto) {
-//     const carrito = obtenerCarrito();
-
-//     const productoExistente = carrito.find(
-//         item => item.id === producto.id
-//     );
-
-//     if (productoExistente) {
-//         productoExistente.cantidad++;
-//     } else {
-//         producto.cantidad = 1;
-//         carrito.push(producto);
-//     }
-
-//     guardarCarrito(carrito);
-// }
-
-// document.querySelector(".productos").addEventListener("click", function(evento) {
-//     const boton = evento.target.closest(".boton");
-
-//     if (!boton) return;
-
-//     evento.preventDefault();
-
-//     const tarjeta = boton.closest(".card");
-
-//     const id = tarjeta.dataset.id;
-
-//     if (!id) return;
-
-//     const nombre = tarjeta.querySelector("h2").textContent.trim();
-//     const descripcion = tarjeta.querySelector("p:not(.precio)").textContent.trim();
-//     const precio = Number(tarjeta.querySelector(".precio").textContent.trim());
-//     const imagen = tarjeta.querySelector("img").getAttribute("src");
-
-//     if (!nombre || !descripcion || !Number.isFinite(precio) || precio <= 0) {
-//         return;
-//     }
-
-//     agregarAlCarrito({
-//         id: id,
-//         nombre: nombre,
-//         descripcion: descripcion,
-//         precio: precio,
-//         imagen: imagen
-//     });
-
-//     console.log(obtenerCarrito());
-// });
-
 const CLAVE_CARRITO = "nutripro-carrito";
 
-// ELEMENTOS DEL HTML
 const botonAbrir = document.getElementById("abrir-carrito");
 const botonCerrar = document.getElementById("cerrar-carrito");
 const fondoCarrito = document.getElementById("carrito-fondo");
@@ -72,7 +10,6 @@ const totalCarrito = document.getElementById("carrito-total");
 const botonPedido = document.getElementById("realizar-pedido");
 
 
-// OBTENER Y GUARDAR EL CARRITO
 function obtenerCarrito() {
     return JSON.parse(localStorage.getItem(CLAVE_CARRITO)) || [];
 }
@@ -82,7 +19,6 @@ function guardarCarrito(carrito) {
 }
 
 
-// FORMATEAR PRECIOS
 function formatearPrecio(precio) {
     return precio.toLocaleString("es-AR", {
         style: "currency",
@@ -91,8 +27,6 @@ function formatearPrecio(precio) {
     });
 }
 
-
-// AGREGAR UN PRODUCTO
 function agregarAlCarrito(producto) {
     const carrito = obtenerCarrito();
 
@@ -111,8 +45,6 @@ function agregarAlCarrito(producto) {
     actualizarCarrito();
 }
 
-
-// ACTUALIZAR CANTIDAD O ELIMINAR PRODUCTOS
 function modificarCantidad(id, cambio) {
     const carrito = obtenerCarrito();
     const producto = carrito.find(item => item.id === id);
@@ -138,8 +70,6 @@ function eliminarProducto(id) {
     actualizarCarrito();
 }
 
-
-// MOSTRAR EL CARRITO EN PANTALLA
 function actualizarCarrito() {
     const carrito = obtenerCarrito();
 
@@ -205,8 +135,6 @@ function actualizarCarrito() {
     botonPedido.disabled = carrito.length === 0;
 }
 
-
-// ABRIR Y CERRAR EL PANEL
 function abrirCarrito() {
     panelCarrito.classList.add("abierto");
     fondoCarrito.classList.add("activo");
@@ -237,8 +165,6 @@ document.addEventListener("keydown", function(evento) {
     }
 });
 
-
-// DETECTAR CLICS EN LOS BOTONES DEL CARRITO
 listaProductos.addEventListener("click", function(evento) {
     const boton = evento.target.closest("button");
 
@@ -256,8 +182,6 @@ listaProductos.addEventListener("click", function(evento) {
     }
 });
 
-
-// DETECTAR CLICS EN LOS BOTONES DE LOS PRODUCTOS
 document.querySelector(".productos").addEventListener(
     "click",
     function(evento) {
@@ -270,7 +194,6 @@ document.querySelector(".productos").addEventListener(
         const tarjeta = boton.closest(".card");
         const id = tarjeta.dataset.id;
 
-        // Ignorar las tarjetas sin producto asignado.
         if (!id) return;
 
         const nombre = tarjeta.querySelector("h2").textContent.trim();
@@ -302,8 +225,6 @@ document.querySelector(".productos").addEventListener(
     }
 );
 
-
-// GENERAR PEDIDO PARA WHATSAPP
 botonPedido.addEventListener("click", function() {
     const carrito = obtenerCarrito();
 
@@ -333,7 +254,4 @@ botonPedido.addEventListener("click", function() {
     window.open(url, "_blank");
 });
 
-
-// MOSTRAR LOS PRODUCTOS GUARDADOS AL CARGAR LA PÁGINA
 actualizarCarrito();
-
