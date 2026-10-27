@@ -13,7 +13,7 @@
         
         <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
         
-        <link rel="stylesheet" href="./css/style.css">
+        <link rel="stylesheet" href="./css/styles.css">
 
         <title>NutriPro</title>
         
@@ -49,75 +49,91 @@
 
         <section class="productos">
 
-            <div class="card">
+            <div class="card" data-id="magnesio-star-60">
                 <img src="img/magnesio.jpg" alt="MAGNESIO STAR NUTRITION">
                 <h2>MAGNESIO STAR NUTRITION</h2>
                 <p>Magnesio Star Nutrition x 60 cápsulas</p>
-                <p class="precio">$17.990</p>
-                <a href="#" class="boton">COMPRAR</a>
+                <p class="precio">17990</p>
+                <a href="#" class="boton">AGREGAR AL CARRITO</a>
             </div>
 
-            <div class="card">
+            <div class="card" data-id="colageno-star-210">
                 <img src="img/colageno.jpg" alt="COLÁGENO STAR NUTRITION">
                 <h2>COLÁGENO STAR NUTRITION</h2>
                 <p>Colágeno Star Nutrition 210 gramos</p>
-                <p class="precio">$21.990</p>
-                <a href="#" class="boton">COMPRAR</a>
+                <p class="precio">21990</p>
+                <a href="#" class="boton">AGREGAR AL CARRITO</a>
             </div>
 
-            <div class="card">
+            <div class="card" data-id="omega3-star-60">
                 <img src="img/omega3.jpg" alt="OMEGA 3 STAR NUTRITION">
                 <h2>OMEGA 3 STAR NUTRITION</h2>
                 <p>Omega 3 Star Nutrition x 60 cápsulas</p>
-                <p class="precio">$35.990</p>
-                <a href="#" class="boton">COMPRAR</a>
-            </div>
-
-            <div class="card">
-                <img src="img/colageno.jpg" alt="COLÁGENO STAR NUTRITION">
-                <h2></h2>
-                <p></p>
-                <p class="precio"></p>
-                <a href="#" class="boton">COMPRAR</a>
-            </div>
-
-            <div class="card">
-                <img src="img/colageno.jpg" alt="COLÁGENO STAR NUTRITION">
-                <h2></h2>
-                <p></p>
-                <p class="precio"></p>
-                <a href="#" class="boton">COMPRAR</a>
-            </div>
-
-            <div class="card">
-                <img src="img/colageno.jpg" alt="COLÁGENO STAR NUTRITION">
-                <h2></h2>
-                <p></p>
-                <p class="precio"></p>
-                <a href="#" class="boton">COMPRAR</a>
-            </div>
-
-            <div class="card">
-                <img src="img/colageno.jpg" alt="COLÁGENO STAR NUTRITION">
-                <h2></h2>
-                <p></p>
-                <p class="precio"></p>
-                <a href="#" class="boton">COMPRAR</a>
-            </div>
-
-            <div class="card">
-                <img src="img/colageno.jpg" alt="COLÁGENO STAR NUTRITION">
-                <h2></h2>
-                <p></p>
-                <p class="precio"></p>
-                <a href="#" class="boton">COMPRAR</a>
+                <p class="precio">35990</p>
+                <a href="#" class="boton">AGREGAR AL CARRITO</a>
             </div>
 
         </section>
 
+
+        
+
+
+
+
+
+        <button class="carrito-flotante" id="abrir-carrito" aria-label="Abrir carrito" aria-expanded="false">
+            🛒
+            <span class="carrito-contador" id="carrito-contador">0</span>
+        </button>
+
+        <div class="carrito-fondo" id="carrito-fondo"></div>
+
+        <aside class="carrito-panel" id="carrito-panel" aria-label="Carrito de compras" aria-hidden="true">
+            <div class="carrito-encabezado">
+                <h2>Mi carrito</h2>
+                <button class="carrito-cerrar" id="cerrar-carrito" aria-label="Cerrar carrito">
+                    &times;
+                </button>
+            </div>
+
+            <div class="carrito-productos" id="carrito-productos"></div>
+
+            <div class="carrito-pie">
+                <p class="carrito-total">
+                    Total: <span id="carrito-total">$0</span>
+                </p>
+
+                <button class="carrito-pedido" id="realizar-pedido">
+                    REALIZAR MI PEDIDO
+                </button>
+            </div>
+        </aside>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
     <a class="whatsapp" href="https://wa.me/5493517660848" target="_blank">
      <img src="img/whatsapp.png" alt="WhatsApp" width="60" height="60">
     </a>
+
+    <script src="./js/app.js"></script>
 
     </body>
 
