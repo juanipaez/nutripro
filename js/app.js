@@ -255,3 +255,12 @@ botonPedido.addEventListener("click", function() {
 });
 
 actualizarCarrito();
+
+if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./service-worker.js")
+            .catch(error => {
+                console.error("Error al registrar el service worker:", error);
+            });
+    });
+}
