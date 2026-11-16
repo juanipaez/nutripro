@@ -545,12 +545,10 @@ inicializarPrecios();
 
 if ("serviceWorker" in navigator) {
     window.addEventListener("load", () => {
-        navigator.serviceWorker.register("/js/service-worker.js", {
-            scope: "/"
-        })
-        .catch(error => {
-            console.error("Error al registrar el service worker:", error);
-        });
+        navigator.serviceWorker.register("/service-worker.js")
+            .catch(error => {
+                console.error("Error al registrar el service worker:", error);
+            });
     });
 }
 
