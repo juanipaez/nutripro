@@ -36,6 +36,8 @@ header a:hover {
 }
 
 .header-search {
+    display: flex;
+    justify-content: center;
     margin-left: auto;
     transform: translateX(20px);
 }
@@ -465,8 +467,8 @@ footer a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 100px;
-    padding: 60px 20px;
+    min-height: 150px;
+    padding: 40px 20px;
     background: linear-gradient(
         135deg,
         #343a40,
@@ -494,6 +496,15 @@ footer a:hover {
     line-height: 1.6;
     color: #DCDCDD;
     margin: 0;
+}
+
+@media (max-width: 750px) {
+    .ver-mas{
+        text-align: center;
+        color: #4C5C68;
+        text-decoration: underline;
+        cursor: pointer;
+    }
 }
 
 /* RESPONSIVE */
@@ -542,6 +553,8 @@ footer a:hover {
     }
 
     .header-search {
+        display: flex;
+        justify-content: center;
         margin: 120px 0 0;
         transform: none;
     }
