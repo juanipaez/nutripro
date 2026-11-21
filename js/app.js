@@ -489,7 +489,7 @@ function actualizarCarrito() {
     if (carrito.length === 0) {
         listaProductos.innerHTML = `
             <p class="carrito-vacio">
-                Tu carrito está vacío.
+                Tu carrito está vacío. ¡Agregá productos para comenzar tu pedido!
             </p>
         `;
     }
