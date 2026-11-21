@@ -1,3 +1,35 @@
+// MODO OSCURO
+
+const CLAVE_TEMA = "nutripro-tema";
+
+const botonTema = document.getElementById("boton-tema");
+
+function aplicarTema(tema) {
+    document.documentElement.dataset.tema = tema;
+
+    localStorage.setItem(CLAVE_TEMA, tema);
+
+    if (botonTema) {
+        botonTema.textContent = tema === "oscuro" ? "☀️" : "🌙";
+
+        botonTema.setAttribute(
+            "aria-label",
+            tema === "oscuro" ? "Activar modo claro" : "Activar modo oscuro"
+        );
+    }
+}
+
+aplicarTema(localStorage.getItem(CLAVE_TEMA) || "claro");
+
+if (botonTema) {
+    botonTema.addEventListener("click", function() {
+        const temaActual = document.documentElement.dataset.tema;
+
+        aplicarTema(temaActual === "oscuro" ? "claro" : "oscuro");
+    });
+}
+
+
 const CLAVE_CARRITO = "nutripro-carrito";
 const CLAVE_CATALOGO = "nutripro-catalogo";
 

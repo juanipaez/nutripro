@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <script>
+            document.documentElement.dataset.tema =
+                localStorage.getItem("nutripro-tema") || "claro";
+        </script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -28,8 +32,12 @@
             </a>
 
             <div class="header-links">
-                <a href="login.html">Iniciar sesión</a>
-                <a href="registro.html">Registrarse</a>
+            <a href="login.html">Iniciar sesión</a>
+            <a href="registro.html">Registrarse</a>
+
+            <button type="button" id="boton-tema" aria-label="Activar modo oscuro">
+                🌙
+            </button>
             </div>
         </header>
 

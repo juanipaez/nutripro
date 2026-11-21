@@ -16,6 +16,10 @@
 
         <title>NutriPro - Creatinas</title>
     </head>
+    <script>
+    document.documentElement.dataset.tema =
+        localStorage.getItem("nutripro-tema") || "claro";
+    </script>
     <body id="header">
         <header>
             <div class="header-search">
@@ -27,8 +31,12 @@
             </a>
 
             <div class="header-links">
-                <a href="login.html">Iniciar sesión</a>
-                <a href="registro.html">Registrarse</a>
+            <a href="login.html">Iniciar sesión</a>
+            <a href="registro.html">Registrarse</a>
+
+            <button type="button" id="boton-tema" aria-label="Activar modo oscuro">
+                🌙
+            </button>
             </div>
         </header>
 
