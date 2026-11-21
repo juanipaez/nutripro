@@ -49,6 +49,9 @@ const contadorCarrito = document.getElementById("carrito-contador");
 const totalCarrito = document.getElementById("carrito-total");
 const botonPedido = document.getElementById("realizar-pedido");
 const contenedorProductos = document.querySelector(".productos");
+const buscador = document.getElementById("search-input");
+const tituloResultados = document.getElementById("titulo-resultados");
+const contadorResultados = document.getElementById("contador-resultados");
 
 
 // CARRITO
@@ -93,6 +96,55 @@ function normalizarTexto(texto) {
         .toLowerCase()
         .normalize("NFD")
         .replace(/[\u0300-\u036f]/g, "");
+}
+
+
+// BUSCADOR
+
+function buscarProductos(texto, catalogo) {
+    const busqueda = normalizarTexto(texto);
+
+    return catalogo.filter(producto => {
+        const campos = [
+            producto.nombre,
+            producto.descripcion,
+            producto.categoria,
+            producto.info
+        ];
+
+        return campos.some(campo =>
+            normalizarTexto(campo).includes(busqueda)
+        );
+    });
+}
+
+
+function ejecutarBusqueda(texto) {
+    const busqueda = texto.trim();
+
+    if (busqueda === "") return;
+
+    const rutaResultados = location.pathname.toLowerCase().includes("/pages/")
+        ? "resultados.html"
+        : "pages/resultados.html";
+
+    const url = new URL(rutaResultados, location.href);
+
+    url.searchParams.set("buscar", busqueda);
+
+    location.href = url.href;
+}
+
+
+// EVENTO DEL BUSCADOR
+
+if (buscador) {
+    buscador.addEventListener("keydown", function(evento) {
+        if (evento.key === "Enter") {
+            evento.preventDefault();
+            ejecutarBusqueda(buscador.value);
+        }
+    });
 }
 
 
@@ -299,28 +351,80 @@ function mostrarInfoProducto(nombre, descripcion, info) {
 
 // MOSTRAR LOS PRODUCTOS
 
+// MOSTRAR LOS PRODUCTOS
+
 function mostrarProductos(catalogo) {
     if (!contenedorProductos) return;
+
+    const pagina = location.pathname
+        .split("/")
+        .pop()
+        .toLowerCase();
 
     const categoriaPagina = obtenerCategoriaPagina();
 
     let productosFiltrados = [];
 
-    if (categoriaPagina === "inicio") {
+    // PÁGINA DE RESULTADOS
 
-        // Copiar y mezclar todos los productos aleatoriamente.
+    if (pagina === "resultados.html") {
+
+        const parametros = new URLSearchParams(location.search);
+        const busqueda = parametros.get("buscar") || "";
+
+        if (buscador) {
+            buscador.value = busqueda;
+        }
+
+        if (busqueda === "") {
+            if (tituloResultados) {
+                tituloResultados.textContent = "Resultados de búsqueda";
+            }
+
+            contenedorProductos.innerHTML = `
+                <p class="productos-vacios">
+                    Ingresá un término en el buscador para encontrar productos.
+                </p>
+            `;
+
+            if (contadorResultados) {
+                contadorResultados.textContent = "";
+            }
+
+            return;
+        }
+
+        productosFiltrados = buscarProductos(busqueda, catalogo);
+
+        if (tituloResultados) {
+            tituloResultados.textContent = `Resultados para: "${busqueda}"`;
+        }
+
+        if (contadorResultados) {
+            contadorResultados.textContent =
+                `${productosFiltrados.length} productos encontrados`;
+        }
+
+    // PÁGINA DE INICIO
+
+    } else if (categoriaPagina === "inicio") {
+
         productosFiltrados = [...catalogo];
 
         productosFiltrados.sort(() => Math.random() - 0.5);
 
-        // Mostrar solamente 8 productos.
         productosFiltrados = productosFiltrados.slice(0, 8);
 
+    // PÁGINAS DE CATEGORÍAS
+
     } else {
+
         productosFiltrados = catalogo.filter(producto =>
             normalizarTexto(producto.categoria) === categoriaPagina
         );
     }
+
+    // MOSTRAR RESULTADOS
 
     contenedorProductos.innerHTML = "";
 
@@ -331,11 +435,12 @@ function mostrarProductos(catalogo) {
     if (productosFiltrados.length === 0) {
         contenedorProductos.innerHTML = `
             <p class="productos-vacios">
-                No hay productos disponibles en esta categoría.
+                No se encontraron productos que coincidan con la búsqueda.
             </p>
         `;
     }
 }
+
 
 // ACTUALIZAR LOS PRECIOS DEL CARRITO
 

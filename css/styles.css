@@ -43,6 +43,11 @@ a {
 h2 {
     font-size: 24px;
     color: var(--texto);
+    padding: 15px;
+}
+
+p {
+    padding: 15px;
 }
 
 /* HEADER */

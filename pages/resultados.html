@@ -1,0 +1,114 @@
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <script>
+                document.documentElement.dataset.tema =
+                    localStorage.getItem("nutripro-tema") || "claro";
+            </script>
+
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+            <meta name="description" content="NutriPro - Suplementos deportivos, proteínas, creatinas y productos para nutrición.">
+            <meta name="author" content="Juan Paez Enrico">
+
+            <link rel="icon" type="image/png" href="../img/icon.png">
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            
+            <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+            
+            <link rel="stylesheet" href="../css/styles.css">
+
+            <title>NutriPro - Resultados de tu búsqueda</title>
+            
+            <link rel="manifest" href="../manifest.json">
+            <meta name="theme-color" content="#4C5C68">
+        </head>
+        <body id="header">
+
+            <header>
+                <div class="header-search">
+                    <input type="text" placeholder="¿Qué estás buscando?" id="search-input">
+                </div>
+
+                <a href="../index.html">
+                    <img src="../img/logo5.png" alt="NutriPro" width="280">
+                </a>
+
+                <div class="header-links">
+                <a href="./login.html">Iniciar sesión</a>
+                <a href="./registro.html">Registrarse</a>
+
+                <button type="button" id="boton-tema" aria-label="Activar modo oscuro">
+                    🌙
+                </button>
+                </div>
+            </header>
+
+            <br>
+
+            <nav>
+                <input type="checkbox" id="menu-toggle">
+                <label for="menu-toggle" class="menu-icon">☰</label>
+
+                <ul class="nav-links">
+                    <a href="creatinas.html">CREATINAS</a>
+                    <a href="proteinas.html">PROTEÍNAS</a>
+                    <a href="mas-productos.html">MÁS PRODUCTOS</a>
+                </ul>
+            </nav>
+
+            <main>
+                <section class="seccion-productos">
+                    <h2 id="titulo-resultados">Resultados de tu búsqueda</h2>
+                    <p id="contador-resultados"></p>
+                    <div class="productos"></div>
+                </section>
+            </main>
+
+            <button class="carrito-flotante" id="abrir-carrito" aria-label="Abrir carrito" aria-expanded="false">
+                <img src="../img/cart.png" alt="Carrito">
+                <span class="carrito-contador" id="carrito-contador">0</span>
+            </button>
+
+            <div class="carrito-fondo" id="carrito-fondo"></div>
+
+            <aside class="carrito-panel" id="carrito-panel" aria-label="Carrito de compras" aria-hidden="true">
+                <div class="carrito-encabezado">
+                    <h2>Mi carrito</h2>
+                    <button class="carrito-cerrar" id="cerrar-carrito" aria-label="Cerrar carrito">
+                        &times;
+                    </button>
+                </div>
+
+                <div class="carrito-productos" id="carrito-productos"></div>
+
+                <div class="carrito-pie">
+                    <p class="carrito-total">
+                        Total: <span id="carrito-total">$0</span>
+                    </p>
+
+                    <button class="carrito-pedido" id="realizar-pedido">
+                        REALIZAR MI PEDIDO
+                    </button>
+                </div>
+            </aside>
+
+        <a class="whatsapp" href="https://wa.me/5493517660848" target="_blank">
+        <img src="../img/whatsapp.png" alt="WhatsApp" width="60" height="60">
+        </a>
+
+        <footer>
+            Seguinos en nuestro <a href="https://www.instagram.com/nutripro_suplementos.store/" target="_blank">Instagram</a>
+            <br>
+            <br>
+            <p>NutriPro Suplementos - 2026</p>
+        </footer>   
+
+        <script src="../js/app.js"></script>
+        <script async src="https://www.instagram.com/embed.js"></script>
+        <script async src="https://www.tiktok.com/embed.js"></script>
+
+        </body>
+    </html>
