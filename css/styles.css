@@ -63,6 +63,8 @@ header img:hover {
 }
 
 nav {
+    color: #DCDCDD;
+
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -78,6 +80,8 @@ nav {
 }
 
 nav a {
+    color: #DCDCDD;
+    
     text-decoration: none;
     padding: 8px 14px;
     border-radius: 15px;
