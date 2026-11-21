@@ -851,7 +851,7 @@ if (formularioLogin) {
         const usuarioGuardado = sessionStorage.getItem("nutripro-usuario");
 
         if (!usuarioGuardado) {
-            alert("No hay ningún usuario registrado. Primero tenés que registrarte.");
+            alert("No se encontró ningún usuario registrado con esos datos.");
             return;
         }
 
