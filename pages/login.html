@@ -84,6 +84,34 @@
 
         </form>
 
+                <button class="carrito-flotante" id="abrir-carrito" aria-label="Abrir carrito" aria-expanded="false">
+            <img src="../img/cart.png" alt="Carrito">
+            <span class="carrito-contador" id="carrito-contador">0</span>
+        </button>
+
+        <div class="carrito-fondo" id="carrito-fondo"></div>
+
+        <aside class="carrito-panel" id="carrito-panel" aria-label="Carrito de compras" aria-hidden="true">
+            <div class="carrito-encabezado">
+                <h2>Mi carrito</h2>
+                <button class="carrito-cerrar" id="cerrar-carrito" aria-label="Cerrar carrito">
+                    &times;
+                </button>
+            </div>
+
+            <div class="carrito-productos" id="carrito-productos"></div>
+
+            <div class="carrito-pie">
+                <p class="carrito-total">
+                    Total: <span id="carrito-total">$0</span>
+                </p>
+
+                <button class="carrito-pedido" id="realizar-pedido">
+                    REALIZAR MI PEDIDO
+                </button>
+            </div>
+        </aside>
+
         <a class="whatsapp" href="https://wa.me/5493517660848" target="_blank">
         <img src="../img/whatsapp.png" alt="WhatsApp" width="60" height="60">
         </a>
