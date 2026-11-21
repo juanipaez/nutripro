@@ -500,8 +500,13 @@ footer a:hover {
     margin: 0;
 }
 
+.ver-mas {
+    display: none;
+}
+
 @media (max-width: 750px) {
     .ver-mas{
+        display: block;
         text-align: center;
         color: #4C5C68;
         text-decoration: underline;
