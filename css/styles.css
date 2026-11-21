@@ -160,7 +160,7 @@ nav a:hover {
 
 form {
     margin-left: 150px;
-    color: #DCDCDD;
+    color: #44494C;
     font-weight: bold;
 }
 
@@ -461,7 +461,56 @@ footer a:hover {
     text-align: center;
 }
 
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100px;
+    padding: 60px 20px;
+    background: linear-gradient(
+        135deg,
+        #343a40,
+        #4C5C68,
+        #1985A1
+    );
+    text-align: center;
+    color: #ffffff;
+}
 
+.hero-content {
+    max-width: 800px;
+}
+
+.hero h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.hero p {
+    font-style: italic;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #DCDCDD;
+    margin: 0;
+}
+
+/* RESPONSIVE */
+@media (max-width: 750px) {
+    .hero {
+        min-height: 150px;
+        padding: 40px 20px;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+}
 
 @media (max-width: 480px) {
     .carrito-panel {
