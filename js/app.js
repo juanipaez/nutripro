@@ -811,3 +811,109 @@ if ("serviceWorker" in navigator) {
             });
     });
 }
+
+// REGISTRO DE USUARIO
+
+const formularioRegistro = document.getElementById("form-registro");
+
+if (formularioRegistro) {
+    formularioRegistro.addEventListener("submit", function(evento) {
+        evento.preventDefault();
+
+        const usuario = {
+            nombre: document.getElementById("nombre").value.trim(),
+            apellido: document.getElementById("apellido").value.trim(),
+            email: document.getElementById("email").value.trim().toLowerCase(),
+            password: document.getElementById("password").value,
+            fechaNacimiento: document.getElementById("fecha_nacimiento").value
+        };
+
+        sessionStorage.setItem("nutripro-usuario", JSON.stringify(usuario));
+
+        alert("¡Te registraste correctamente! Ya podés iniciar sesión.");
+
+        location.href = "login.html";
+    });
+}
+
+
+// INICIO DE SESIÓN
+
+const formularioLogin = document.getElementById("form-login");
+
+if (formularioLogin) {
+    formularioLogin.addEventListener("submit", function(evento) {
+        evento.preventDefault();
+
+        const email = document.getElementById("email").value.trim().toLowerCase();
+        const password = document.getElementById("password").value;
+
+        const usuarioGuardado = sessionStorage.getItem("nutripro-usuario");
+
+        if (!usuarioGuardado) {
+            alert("No hay ningún usuario registrado. Primero tenés que registrarte.");
+            return;
+        }
+
+        const usuario = JSON.parse(usuarioGuardado);
+
+        if (email === usuario.email && password === usuario.password) {
+
+            const sesion = {
+                nombre: usuario.nombre,
+                apellido: usuario.apellido,
+                email: usuario.email
+            };
+
+            sessionStorage.setItem("nutripro-sesion", JSON.stringify(sesion));
+
+            // alert(`¡Bienvenido/a, ${usuario.nombre}!`);
+
+            location.href = "../index.html";
+
+        } else {
+            alert("El email o la contraseña son incorrectos.");
+        }
+    });
+}
+
+// ACTUALIZAR ENCABEZADO SEGÚN LA SESIÓN
+
+function actualizarHeaderUsuario() {
+    const contenedorUsuario = document.getElementById("usuario-header");
+
+    if (!contenedorUsuario) return;
+
+    const enlacesLogin = document.querySelector('a[href="/pages/login.html"]');
+    const enlacesRegistro = document.querySelector('a[href="/pages/registro.html"]');
+
+    const sesionGuardada = sessionStorage.getItem("nutripro-sesion");
+
+    if (sesionGuardada) {
+        const usuario = JSON.parse(sesionGuardada);
+
+        contenedorUsuario.innerHTML = `
+            <span>Hola, ${usuario.nombre}</span>
+            <a href="#" id="cerrar-sesion">Cerrar sesión</a>
+        `;
+
+        if (enlacesLogin) enlacesLogin.style.display = "none";
+        if (enlacesRegistro) enlacesRegistro.style.display = "none";
+
+        document.getElementById("cerrar-sesion").addEventListener("click", function(evento) {
+            evento.preventDefault();
+
+            sessionStorage.removeItem("nutripro-sesion");
+
+            location.href = location.pathname.includes("/pages/")
+                ? "../index.html"
+                : "index.html";
+        });
+
+    } else {
+        if (enlacesLogin) enlacesLogin.style.display = "";
+        if (enlacesRegistro) enlacesRegistro.style.display = "";
+    }
+}
+
+actualizarHeaderUsuario();

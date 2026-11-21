@@ -43,14 +43,7 @@ a {
 h2 {
     font-size: 24px;
     color: var(--texto);
-    padding: 15px;
 }
-
-p {
-    padding: 15px;
-}
-
-/* HEADER */
 
 header {
     margin: 10px;
@@ -689,6 +682,17 @@ footer a:hover {
 
 .redes {
     padding-bottom: 20px;
+}
+
+.seccion-productos {
+    padding: 15px;
+    margin-bottom: 30px;
+}
+
+#usuario-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 /* RESPONSIVE REDES */
