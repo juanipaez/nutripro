@@ -465,6 +465,66 @@ footer a:hover {
     text-align: center;
 }
 
+.imagen-info {
+    cursor: pointer;
+}
+
+/* IMAGEN INTERACTIVA */
+
+.imagen-info {
+    cursor: pointer;
+}
+
+
+/* DIÁLOGO */
+
+.dialogo-info {
+    width: min(90%, 500px);
+    max-height: 80vh;
+    margin: auto;
+    padding: 25px;
+    border: none;
+    border-radius: 14px;
+    background-color: #DCDCDD;
+    color: #46494C;
+}
+
+.dialogo-info::backdrop {
+    background-color: rgba(0, 0, 0, 0.65);
+}
+
+.dialogo-encabezado {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.dialogo-encabezado h2 {
+    margin: 0;
+    font-size: 22px;
+}
+
+.dialogo-cerrar {
+    border: none;
+    background: none;
+    color: #46494C;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+#dialogo-contenido {
+    line-height: 1.6;
+    white-space: pre-line;
+    overflow-wrap: anywhere;
+}
+
+#dialogo-descripcion {
+    font-size: 18px;
+    font-weight: bold;
+}
+
 .hero {
     display: flex;
     align-items: center;

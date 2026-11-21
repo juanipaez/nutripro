@@ -16,7 +16,7 @@
 
         <title>NutriPro - Más Productos</title>
     </head>
-    <body>
+    <body id="header">
         <header>
             <div class="header-search">
                 <input type="text" placeholder="¿Qué estás buscando?" id="search-input">
@@ -45,7 +45,16 @@
 
         <section class="productos" id="contenedor-productos"> </section>
 
-                <button class="carrito-flotante" id="abrir-carrito" aria-label="Abrir carrito" aria-expanded="false">
+                <br>
+        <p class="ver-mas">
+            <label for="menu-toggle">Ver más productos</label>
+            <br>
+            <br>
+            <br>
+            <a href="#header">Volver arriba</a>
+        </p>
+
+        <button class="carrito-flotante" id="abrir-carrito" aria-label="Abrir carrito" aria-expanded="false">
             <img src="../img/cart.png" alt="Carrito">
             <span class="carrito-contador" id="carrito-contador">0</span>
         </button>
@@ -78,8 +87,6 @@
         </a>
 
         <footer>
-            <br>
-            <br>
             <br>
             Seguinos en nuestro <a href="https://www.instagram.com/nutripro_suplementos.store/" target="_blank">Instagram</a>
             <br>

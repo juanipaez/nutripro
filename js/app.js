@@ -166,10 +166,14 @@ function crearTarjeta(producto) {
     imagen.alt = producto.nombre;
     imagen.loading = "lazy";
 
+    imagen.classList.add("imagen-info");
+    imagen.dataset.info = producto.info;
+
     const nombre = document.createElement("h2");
     nombre.textContent = producto.nombre;
 
     const descripcion = document.createElement("p");
+    descripcion.className = "descripcion";
     descripcion.textContent = producto.descripcion;
 
     const precio = document.createElement("p");
@@ -192,6 +196,74 @@ function crearTarjeta(producto) {
     return tarjeta;
 }
 
+// MOSTRAR INFORMACIÓN AL TOCAR LA IMAGEN
+
+document.addEventListener("click", function(evento) {
+    const imagen = evento.target.closest(".productos .imagen-info");
+
+    if (!imagen) return;
+
+    const tarjeta = imagen.closest(".card");
+
+    if (!tarjeta) return;
+
+    mostrarInfoProducto(
+    tarjeta.querySelector("h2").textContent,
+    tarjeta.querySelector(".descripcion").textContent,
+    imagen.dataset.info
+    );
+});
+
+// MOSTRAR INFORMACIÓN DEL PRODUCTO
+
+function mostrarInfoProducto(nombre, descripcion, info) {
+    let dialogo = document.getElementById("dialogo-info");
+
+    if (!dialogo) {
+        dialogo = document.createElement("dialog");
+        dialogo.id = "dialogo-info";
+        dialogo.className = "dialogo-info";
+
+        const encabezado = document.createElement("div");
+        encabezado.className = "dialogo-encabezado";
+
+        const titulo = document.createElement("h2");
+        titulo.id = "dialogo-titulo";
+
+        const botonCerrar = document.createElement("button");
+        botonCerrar.type = "button";
+        botonCerrar.className = "dialogo-cerrar";
+        botonCerrar.textContent = "×";
+        botonCerrar.setAttribute("aria-label", "Cerrar");
+
+        const descripcionElemento = document.createElement("p");
+        descripcionElemento.id = "dialogo-descripcion";
+
+        const contenido = document.createElement("p");
+        contenido.id = "dialogo-contenido";
+
+        botonCerrar.addEventListener("click", () => {
+            dialogo.close();
+        });
+
+        encabezado.append(titulo, botonCerrar);
+        dialogo.append(encabezado, descripcionElemento, contenido);
+
+        dialogo.addEventListener("click", evento => {
+            if (evento.target === dialogo) {
+                dialogo.close();
+            }
+        });
+
+        document.body.appendChild(dialogo);
+    }
+
+    document.getElementById("dialogo-titulo").textContent = nombre;
+    document.getElementById("dialogo-descripcion").textContent = descripcion;
+    document.getElementById("dialogo-contenido").textContent = info;
+
+    dialogo.showModal();
+}
 
 // MOSTRAR LOS PRODUCTOS
 
