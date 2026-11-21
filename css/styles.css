@@ -36,10 +36,12 @@ header a:hover {
 }
 
 .header-search {
-    display: flex;
-    justify-content: center;
     margin-left: auto;
     transform: translateX(20px);
+}
+
+.header-search input::placeholder {
+    text-align: center;
 }
 
 header img {
@@ -553,8 +555,6 @@ footer a:hover {
     }
 
     .header-search {
-        display: flex;
-        justify-content: center;
         margin: 120px 0 0;
         transform: none;
     }
@@ -581,7 +581,7 @@ footer a:hover {
 
     .nav-links {
         color: #46494C;
-        margin: 0;
+        margin: 10px 0px;
         padding: 0;
         display: none;
         flex-direction: column;
