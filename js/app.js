@@ -863,17 +863,20 @@ if (formularioLogin) {
 
 // ACTUALIZAR ENCABEZADO SEGÚN LA SESIÓN
 
+
 function actualizarHeaderUsuario() {
+
     const contenedorUsuario = document.getElementById("usuario-header");
 
     if (!contenedorUsuario) return;
 
-    const enlacesLogin = document.querySelector('a[href="/pages/login.html"]');
-    const enlacesRegistro = document.querySelector('a[href="/pages/registro.html"]');
+    const estaEnPages = location.pathname.toLowerCase().includes("/pages/");
+    const rutaBase = estaEnPages ? "" : "./pages/";
 
     const sesionGuardada = sessionStorage.getItem("nutripro-sesion");
 
     if (sesionGuardada) {
+
         const usuario = JSON.parse(sesionGuardada);
 
         contenedorUsuario.innerHTML = `
@@ -881,22 +884,23 @@ function actualizarHeaderUsuario() {
             <a href="#" id="cerrar-sesion">Cerrar sesión</a>
         `;
 
-        if (enlacesLogin) enlacesLogin.style.display = "none";
-        if (enlacesRegistro) enlacesRegistro.style.display = "none";
-
         document.getElementById("cerrar-sesion").addEventListener("click", function(evento) {
+
             evento.preventDefault();
 
             sessionStorage.removeItem("nutripro-sesion");
 
-            location.href = location.pathname.includes("/pages/")
-                ? "../index.html"
-                : "index.html";
+            location.reload();
+
         });
 
     } else {
-        if (enlacesLogin) enlacesLogin.style.display = "";
-        if (enlacesRegistro) enlacesRegistro.style.display = "";
+
+        contenedorUsuario.innerHTML = `
+            <a href="${rutaBase}login.html">Iniciar sesión</a>
+            <a href="${rutaBase}registro.html">Registrarse</a>
+        `;
+
     }
 }
 
