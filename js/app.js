@@ -87,9 +87,6 @@ function formatearPrecio(precio) {
     });
 }
 
-
-// NORMALIZAR TEXTO
-
 function normalizarTexto(texto) {
     return String(texto)
         .trim()
@@ -136,8 +133,6 @@ function ejecutarBusqueda(texto) {
 }
 
 
-// EVENTO DEL BUSCADOR
-
 if (buscador) {
     buscador.addEventListener("keydown", function(evento) {
         if (evento.key === "Enter") {
@@ -148,33 +143,33 @@ if (buscador) {
 }
 
 
-    // CONVERTIR ENLACES DE GOOGLE DRIVE
+// CONVERTIR ENLACES DE GOOGLE DRIVE
 
-    function convertirImagenDrive(url) {
-        const enlace = String(url).trim();
+function convertirImagenDrive(url) {
+    const enlace = String(url).trim();
 
-        if (!enlace.includes("drive.google.com")) {
-            return enlace;
-        }
-
-        let id = null;
-
-        const archivo = enlace.match(/\/file\/d\/([^/]+)/);
-        const parametro = enlace.match(/[?&]id=([^&]+)/);
-
-        if (archivo) {
-            id = archivo[1];
-        } else if (parametro) {
-            id = parametro[1];
-        }
-
-        if (!id) return enlace;
-
-        return `https://drive.google.com/thumbnail?id=${id}&sz=w1000`;
+    if (!enlace.includes("drive.google.com")) {
+        return enlace;
     }
 
+    let id = null;
 
-// OBTENER Y VALIDAR EL CATÁLOGO
+    const archivo = enlace.match(/\/file\/d\/([^/]+)/);
+    const parametro = enlace.match(/[?&]id=([^&]+)/);
+
+    if (archivo) {
+        id = archivo[1];
+    } else if (parametro) {
+        id = parametro[1];
+    }
+
+    if (!id) return enlace;
+
+    return `https://drive.google.com/thumbnail?id=${id}&sz=w1000`;
+}
+
+
+// OBTENER EL CATÁLOGO
 
 function validarProductos(datos) {
     if (!Array.isArray(datos)) {
@@ -231,12 +226,11 @@ function obtenerCategoriaPagina() {
         return "mas productos";
     }
 
-    // El inicio muestra productos aleatorios de cada categoría.
     return "inicio";
 }
 
 
-// CREAR LAS TARJETAS
+// CREAR LAS CARDS
 
 function crearTarjeta(producto) {
     const tarjeta = document.createElement("div");
@@ -280,7 +274,7 @@ function crearTarjeta(producto) {
     return tarjeta;
 }
 
-// MOSTRAR INFORMACIÓN AL TOCAR LA IMAGEN
+// MOSTRAR INFO AL TOCAR LA IMAGEN
 
 document.addEventListener("click", function(evento) {
     const imagen = evento.target.closest(".productos .imagen-info");
@@ -298,7 +292,7 @@ document.addEventListener("click", function(evento) {
     );
 });
 
-// MOSTRAR INFORMACIÓN DEL PRODUCTO
+// MOSTRAR INFO DEL PRODUCTO
 
 function mostrarInfoProducto(nombre, descripcion, info) {
     let dialogo = document.getElementById("dialogo-info");
@@ -348,8 +342,6 @@ function mostrarInfoProducto(nombre, descripcion, info) {
 
     dialogo.showModal();
 }
-
-// MOSTRAR LOS PRODUCTOS
 
 // MOSTRAR LOS PRODUCTOS
 
@@ -435,14 +427,14 @@ function mostrarProductos(catalogo) {
     if (productosFiltrados.length === 0) {
         contenedorProductos.innerHTML = `
             <p class="productos-vacios">
-                No se encontraron productos que coincidan con la búsqueda.
+                No se encontraron productos que coincidan con tu búsqueda.
             </p>
         `;
     }
 }
 
 
-// ACTUALIZAR LOS PRECIOS DEL CARRITO
+// ACTUALIZAR PRECIOS DEL CARRITO
 
 function sincronizarPreciosCarrito(catalogo) {
     const carrito = obtenerCarrito();
@@ -465,7 +457,7 @@ function sincronizarPreciosCarrito(catalogo) {
 }
 
 
-// CONSULTAR EL CATÁLOGO CON FETCH
+// CONSULTA DEL CATÁLOGO
 
 async function actualizarCatalogo() {
     try {
@@ -497,9 +489,6 @@ async function actualizarCatalogo() {
 
     } catch (error) {
         console.error("Error al actualizar el catálogo:", error);
-
-        // Si falla la consulta, se intenta mostrar
-        // la última versión guardada.
 
         const catalogoGuardado = JSON.parse(
             localStorage.getItem(CLAVE_CATALOGO) || "[]"
@@ -715,7 +704,7 @@ if (listaProductos) {
 }
 
 
-// AGREGAR PRODUCTOS DESDE LAS TARJETAS
+// AGREGAR PRODUCTOS DESDE LAS CARDS
 
 document.addEventListener("click", function(evento) {
     const boton = evento.target.closest(".productos .boton");
@@ -755,7 +744,7 @@ if (botonPedido) {
         carrito.forEach(producto => {
             const subtotal = producto.precio * producto.cantidad;
 
-            mensaje += `${producto.nombre}\n`;
+            mensaje += `${producto.descripcion}\n`;
             mensaje += `Cantidad: ${producto.cantidad}\n`;
             mensaje += `Subtotal: ${formatearPrecio(subtotal)}\n\n`;
         });
@@ -769,7 +758,7 @@ if (botonPedido) {
         mensaje += `TOTAL: ${formatearPrecio(total)}\n\n`;
         mensaje += "¡Gracias!";
 
-        const telefono = "5493517660848";
+        const telefono = "5493516362669";
 
         const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
 
@@ -782,7 +771,6 @@ if (botonPedido) {
 
 actualizarCarrito();
 
-// Mostrar primero el catálogo guardado, si existe.
 const catalogoInicial = JSON.parse(
     localStorage.getItem(CLAVE_CATALOGO) || "[]"
 );
@@ -791,10 +779,8 @@ if (catalogoInicial.length > 0) {
     mostrarProductos(catalogoInicial);
 }
 
-// Consultar el catálogo actualizado.
 actualizarCatalogo();
 
-// Actualizar cada 5 minutos.
 setInterval(actualizarCatalogo, INTERVALO_CATALOGO);
 
 
@@ -866,8 +852,6 @@ if (formularioLogin) {
             };
 
             sessionStorage.setItem("nutripro-sesion", JSON.stringify(sesion));
-
-            // alert(`¡Bienvenido/a, ${usuario.nombre}!`);
 
             location.href = "../index.html";
 
